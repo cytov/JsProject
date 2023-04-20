@@ -1,4 +1,6 @@
 'use strict';
+import textConst from './const';
+
 let answer = Math.trunc(Math.random() * 20 + 1);
 let highscore = 0;
 let score = 20;
@@ -19,15 +21,15 @@ function setHighScore(value) {
 function rightAnswer(guess) {
   document.body.style.backgroundColor = 'green';
   document.querySelector('.number').textContent = answer;
-  document.querySelector('.message').textContent = '🎓 Hurray you did it !!';
+  document.querySelector('.message').textContent = textConst.SUCCESS_TEXT;
   setHighScore(score);
 }
 
 function wrongAnswer(guess) {
   if (guess > answer)
-    document.querySelector('.message').textContent = '📈 Too high';
+    document.querySelector('.message').textContent = textConst.NUMBER_IS_HIGH_TEXT;
   if (guess < answer)
-    document.querySelector('.message').textContent = '📉 Too low!';
+    document.querySelector('.message').textContent = textConst.NUMBER_IS_LOW_TEXT;
   score--;
   setScore(score);
 }
@@ -43,7 +45,7 @@ var reset = () => {
   answer = Math.trunc(Math.random() * 20 + 1);
   document.body.style.backgroundColor = '#222';
   document.querySelector('.guess').value = '';
-  document.querySelector('.message').textContent = 'Start guessing...';
+  document.querySelector('.message').textContent = textConst.INITIATE_TEXT;
   score = 20;
   setScore(20);
 };
